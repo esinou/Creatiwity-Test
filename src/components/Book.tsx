@@ -1,39 +1,38 @@
 import React from 'react';
-import logo from '../logo.svg';
-import '../App.css';
+import '../styles/book.css';
 
 import { connect } from 'react-redux';
 import { saveUserInfos } from '../redux/actions/index';
 
+var myBook = [];
+
 function Book() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="globalContainer">
+            <section className="header">
+                <img src={"https://static.data.gouv.fr/avatars/84/a1ca8ceabe42eb86dd06b657131c40.png"}/>
+                <div>
+                    Creatiwity - Test
+                </div>
+            </section>
+            <section className="book">
+                
+            </section>
+            <section className="button">
+                <div>
+                    Add a new page
+                </div>
+            </section>
+        </div>
+    );
 }
 
-const userStoreToProps = (store: any) => {
-    return {
-        bookData: store.user.bookData,
-    }
+const storeToVariable = (store: any) => {
+    myBook = store.user.bookData;
 }
   
-const userDispatchToProps = {
+const variableToStore = {
     saveUserInfos
 }
   
-export default connect(userStoreToProps, userDispatchToProps)(Book);
+export default connect(storeToVariable, variableToStore)(Book);
