@@ -2,6 +2,9 @@ import React from 'react';
 import logo from '../logo.svg';
 import '../App.css';
 
+import { connect } from 'react-redux';
+import { saveUserInfos } from '../redux/actions/index';
+
 function Book() {
   return (
     <div className="App">
@@ -23,4 +26,14 @@ function Book() {
   );
 }
 
-export default Book;
+const userStoreToProps = (store: any) => {
+    return {
+        bookData: store.user.bookData,
+    }
+}
+  
+const userDispatchToProps = {
+    saveUserInfos
+}
+  
+export default connect(userStoreToProps, userDispatchToProps)(Book);
