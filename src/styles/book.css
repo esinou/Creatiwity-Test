@@ -13,6 +13,7 @@ html, body {
     --background-color: #f8f8f8cc;
     --background-color-two: rgb(231, 231, 231);
     --error-color: #ff2323cc;
+    --error-color-darker: #c71f1fcc;
     --dark-color: #1E1E1E;
     --border-color: #76768013;
 }
@@ -231,4 +232,74 @@ select:focus {
     color: var(--dark-color);
     font-weight: 600;
     margin-top: 20px;
+}
+
+.modalInput {
+    width: 75%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    color: var(--dark-color);
+    font-size: 20px;
+    font-family: 'Montserrat';
+    background-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modalErrorText {
+    color: var(--error-color);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modalRow {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.modalButtonConfirm {
+    display: flex;
+    width: 200px;
+    height: 49px;
+    border-radius: 10px;
+    color: var(--white-color);
+    font-size: 20px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--main-color);
+    cursor: pointer;
+    transition: background-color .3s;
+    margin-right: 20px;
+}
+
+.modalButtonConfirm div:hover {
+    background-color: var(--main-color-darker);
+}
+
+.modalButtonCancel {
+    display: flex;
+    width: 200px;
+    height: 49px;
+    border-radius: 10px;
+    color: var(--white-color);
+    font-size: 20px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--error-color);
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.modalButtonCancel div:hover {
+    background-color: var(--error-color-darker);
 }

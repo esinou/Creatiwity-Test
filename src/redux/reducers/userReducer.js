@@ -1,13 +1,17 @@
 import { SAVE_USER_INFOS } from '../actions/action-types';
 
 const initialState = {
-    bookData: [],
+    myBook: [{
+        title: "",
+        desc: "",
+        photo: ""
+    }],
 }
 
 export default function saveUserInfos(state = initialState, action) {
     if (action.type === SAVE_USER_INFOS) {
         return {
-            bookData: action.payload.bookData,
+            myBook: action.payload.myBook,
         }
     }
     return state;
