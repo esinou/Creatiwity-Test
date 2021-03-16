@@ -8,14 +8,12 @@ import Cookies from 'universal-cookie';
  
 const cookies = new Cookies();
 
-export class MyBookClass
+class MyBookClass
 {
     public title: string;
     public desc: string;
     public photoURL: string;
 }
-
-let myBook: MyBookClass[] = cookies.get('myBook') === undefined ? [] : cookies.get('myBook');
 
 function Book(props: any) {
     const [index, setIndex] = useState(0);
@@ -24,6 +22,7 @@ function Book(props: any) {
     const [newDesc, setDesc] = useState("");
     const [newPhotoURL, setPhotoURL] = useState("");
     const [modalError, setModalError] = useState(false);
+    let myBook: MyBookClass[] = cookies.get('myBook') === undefined ? [] : cookies.get('myBook');
 
     function previousPage() {
         if (index > 1) {
@@ -71,7 +70,7 @@ function Book(props: any) {
                 style={modalStyles}
                 ariaHideApp={false}
                 contentLabel="Add a new page">
-                <div className="">
+                <div>
                     <div className="bookPageTitle">
                         Add a new page
                     </div>
