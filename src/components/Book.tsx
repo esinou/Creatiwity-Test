@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/book.css';
 
-import { connect } from 'react-redux';
-import { saveUserInfos } from '../redux/actions/index';
-
 import Modal from 'react-modal';
-
 import { modalStyles } from '../styles/Modal';
+
+import Cookies from 'universal-cookie';
+ 
+const cookies = new Cookies();
 
 export class MyBookClass
 {
@@ -15,7 +15,7 @@ export class MyBookClass
     public photoURL: string;
 }
 
-let myBook: MyBookClass[] = [];
+let myBook: MyBookClass[] = cookies.get('myBook') === undefined ? [] : cookies.get('myBook');
 
 function Book(props: any) {
     const [index, setIndex] = useState(0);
@@ -59,6 +59,7 @@ function Book(props: any) {
                 desc: newDesc,
                 photoURL: newPhotoURL
             });
+            cookies.set('myBook', myBook);
             closeModal();
         }
     }
@@ -122,7 +123,6 @@ function Book(props: any) {
                 </div>
             );
         }
-        console.log(myBook[index], myBook[index].title);
         return (
             <div className="bookPage">
                 <div className={index % 2 === 0 ? "bookPageLeft" : "bookPageRight"}>
@@ -174,14 +174,4 @@ function Book(props: any) {
     );
 }
 
-const storeToVariable = (store: any) => {
-    return {
-        myBook: store.user.myBook,
-    };
-}
-  
-const variableToStore = {
-    saveUserInfos
-}
-  
-export default connect(storeToVariable, variableToStore)(Book);
+export default Book;

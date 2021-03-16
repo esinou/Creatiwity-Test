@@ -1,1 +1,0 @@
-export const SAVE_USER_INFOS = "SAVE_USER_INFOS"
